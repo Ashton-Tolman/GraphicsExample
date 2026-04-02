@@ -1,6 +1,6 @@
 ﻿namespace GraphicsExample
 {
-    partial class Form1
+    partial class GraphicsExampleForm
     {
         /// <summary>
         ///  Required designer variable.
