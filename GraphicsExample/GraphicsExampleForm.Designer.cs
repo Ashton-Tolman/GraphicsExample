@@ -46,9 +46,10 @@
             // 
             // DrawButton
             // 
-            DrawButton.Location = new Point(1349, 662);
+            DrawButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            DrawButton.Location = new Point(1329, 643);
             DrawButton.Name = "DrawButton";
-            DrawButton.Size = new Size(112, 34);
+            DrawButton.Size = new Size(120, 53);
             DrawButton.TabIndex = 1;
             DrawButton.Text = "&Draw";
             DrawButton.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // 
             // ExitButton
             // 
-            ExitButton.Location = new Point(1467, 662);
+            ExitButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            ExitButton.Location = new Point(1455, 643);
             ExitButton.Name = "ExitButton";
-            ExitButton.Size = new Size(112, 34);
+            ExitButton.Size = new Size(124, 53);
             ExitButton.TabIndex = 2;
             ExitButton.Text = "E&xit";
             ExitButton.UseVisualStyleBackColor = true;

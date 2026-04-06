@@ -23,6 +23,69 @@ namespace GraphicsExample
             thePen.Dispose();
         }
 
+        //rectangle
+        void DrawRectangle()
+        {
+            Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
+            //create a pen to draw with
+            Pen thePen = new Pen(Color.Red);
+
+            g.DrawRectangle(thePen, 100,100, 200, 200);
+            
+
+            //Free the resources
+            g.Dispose();
+            thePen.Dispose();
+        }
+
+        //pie
+
+        void DrawPie()
+        {
+            Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
+            //create a pen to draw with
+            Pen thePen = new Pen(Color.Blue);
+            SolidBrush theBrush = new SolidBrush(Color.Violet);
+            Rectangle bounds = new Rectangle(100, 100, 200, 200);
+
+            //g.DrawPie(thePen, bounds, 0, 45);
+            g.FillPie(theBrush, bounds, 0,120);
+            theBrush.Color = Color.Blue;
+            g.FillPie(theBrush, bounds, 120, 120);
+            theBrush.Color= Color.Yellow;
+            g.FillPie(theBrush, bounds, 240, 120);
+
+            //Free the resources
+            g.Dispose();
+            thePen.Dispose();
+            theBrush.Dispose();
+        }
+
+        //text
+
+        void DrawString()
+        {
+            Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
+            //create a pen to draw with
+            Pen thePen = new Pen(Color.Red);
+            Font theFont = new Font("Arial", 24);
+            SolidBrush theBrush = new SolidBrush(Color.Violet);
+            Rectangle bounds = new Rectangle(100, 100, 200, 200);
+
+
+            //g.DrawString("Hello", theFont, theBrush, DisplayPictureBox.Width /2, 200);
+            g.DrawString("Hello", theFont, theBrush, bounds);
+
+            //Free the resources
+            g.Dispose();
+            thePen.Dispose();
+            theBrush.Dispose();
+            theFont.Dispose();
+        }
+
+
+        //image
+
         void DrawEllipse()
         {
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
@@ -47,6 +110,9 @@ namespace GraphicsExample
         {
             DrawLine();
             DrawEllipse();
+            DrawRectangle();
+            DrawPie();
+            DrawString();
         }
     }
 }
