@@ -88,10 +88,11 @@ namespace GraphicsExample
 
         void DrawImage()
         {
+            int scaleFactor = 1;
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
             //create a pen to draw with
-            Rectangle bounds = new Rectangle(800, 1, 615, 300);
             Image theImage = Image.FromFile("..\\..\\..\\Cruelhorizon.png");
+            Rectangle bounds = new Rectangle(800, 1, theImage.Width /scaleFactor, theImage.Height /scaleFactor);
 
             g.DrawImage(theImage, bounds); //fills rectangle with the image
 
