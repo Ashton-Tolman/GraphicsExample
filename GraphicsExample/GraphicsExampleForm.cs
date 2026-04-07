@@ -1,3 +1,4 @@
+using System.Drawing;
 namespace GraphicsExample
 {
     public partial class GraphicsExampleForm : Form
@@ -5,6 +6,25 @@ namespace GraphicsExample
         public GraphicsExampleForm()
         {
             InitializeComponent();
+            DisplayPictureBox.MouseMove += DisplayPictureBox_MouseMove;
+        }
+
+        int oldX, oldY;
+        void DrawLineSegment(int newX, int newY)
+        {
+            Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
+            //create a pen to draw with
+            Pen thePen = new Pen(Color.Black);
+            thePen.Color = Color.Black;
+            //draw line here
+            g.DrawLine(thePen, oldX, oldY, newX, newY);
+            oldX = newX;
+            oldY = newY;
+
+
+            //Free the resources
+            g.Dispose();
+            thePen.Dispose();
         }
 
         void DrawLine()
@@ -22,6 +42,7 @@ namespace GraphicsExample
             g.Dispose();
             thePen.Dispose();
         }
+
 
         //rectangle
         void DrawRectangle()
@@ -131,5 +152,12 @@ namespace GraphicsExample
             DrawString();
             DrawImage();
         }
+
+        private void DisplayPictureBox_MouseMove(object? sender, MouseEventArgs e)
+        {
+            this.Text = $"({e.X},{e.Y})";
+            DrawLineSegment(e.X, e.Y);
+        }
+
     }
 }
