@@ -6,8 +6,9 @@ namespace GraphicsExample
         public GraphicsExampleForm()
         {
             InitializeComponent();
-            DisplayPictureBox.MouseMove += DisplayPictureBox_MouseMove;
-            DisplayPictureBox.MouseDown += DisplayPictureBox_MouseDown;
+            DisplayPictureBox.MouseMove += DisplayPictureBox_MouseStuff;
+            //DisplayPictureBox.MouseDown += DisplayPictureBox_MouseDown;
+            DisplayPictureBox.MouseDown += DisplayPictureBox_MouseStuff;//now the mouse down event is never called
         }
 
      
@@ -155,7 +156,7 @@ namespace GraphicsExample
             DrawImage();
         }
 
-        private void DisplayPictureBox_MouseMove(object? sender, MouseEventArgs e)
+        private void DisplayPictureBox_MouseStuff(object? sender, MouseEventArgs e)
         {
             this.Text = $"({e.X},{e.Y}) {e.Button}";
             switch (e.Button)
@@ -167,10 +168,12 @@ namespace GraphicsExample
                     //Keep for context boxes 
                     break;
                 case MouseButtons.Middle:
-                    //TODO color change menu
+                    PenColorDialog.ShowDialog();
+                    break;
+                case MouseButtons.None:
                     break;
                 default:
-                    //MessageBox.Show($"{e.Button}");
+                    MessageBox.Show($"{e.Button}");
                     break;
             }
             oldX = e.X;
@@ -179,6 +182,8 @@ namespace GraphicsExample
         private void DisplayPictureBox_MouseDown(object? sender, MouseEventArgs e)
         {
             this.Text += $"{e.Button}";
+
+            PenColorDialog.ShowDialog();
 
         }
 
