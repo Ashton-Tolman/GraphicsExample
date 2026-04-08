@@ -7,7 +7,10 @@ namespace GraphicsExample
         {
             InitializeComponent();
             DisplayPictureBox.MouseMove += DisplayPictureBox_MouseMove;
+            DisplayPictureBox.MouseDown += DisplayPictureBox_MouseDown;
         }
+
+     
 
         int oldX, oldY;
         void DrawLineSegment(int newX, int newY)
@@ -18,8 +21,7 @@ namespace GraphicsExample
             thePen.Color = Color.Black;
             //draw line here
             g.DrawLine(thePen, oldX, oldY, newX, newY);
-            oldX = newX;
-            oldY = newY;
+            
 
 
             //Free the resources
@@ -109,7 +111,7 @@ namespace GraphicsExample
 
         void DrawImage()
         {
-            int scaleFactor = 1;
+            int scaleFactor = 4;
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
             //create a pen to draw with
             Image theImage = Image.FromFile("..\\..\\..\\Cruelhorizon.png");
@@ -155,8 +157,29 @@ namespace GraphicsExample
 
         private void DisplayPictureBox_MouseMove(object? sender, MouseEventArgs e)
         {
-            this.Text = $"({e.X},{e.Y})";
-            DrawLineSegment(e.X, e.Y);
+            this.Text = $"({e.X},{e.Y}) {e.Button}";
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    DrawLineSegment(e.X, e.Y);
+                    break;
+                case MouseButtons.Right:
+                    //Keep for context boxes 
+                    break;
+                case MouseButtons.Middle:
+                    //TODO color change menu
+                    break;
+                default:
+                    //MessageBox.Show($"{e.Button}");
+                    break;
+            }
+            oldX = e.X;
+            oldY = e.Y;
+        }
+        private void DisplayPictureBox_MouseDown(object? sender, MouseEventArgs e)
+        {
+            this.Text += $"{e.Button}";
+
         }
 
     }
