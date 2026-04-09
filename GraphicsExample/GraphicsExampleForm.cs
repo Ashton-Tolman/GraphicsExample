@@ -18,8 +18,8 @@ namespace GraphicsExample
         {
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
             //create a pen to draw with
-            Pen thePen = new Pen(Color.Black);
-            thePen.Color = Color.Black;
+            Pen thePen = new Pen(this.PenColor);
+            thePen.Width = 2;
             //draw line here
             g.DrawLine(thePen, oldX, oldY, newX, newY);
             
@@ -140,6 +140,19 @@ namespace GraphicsExample
             g.Dispose();
             thePen.Dispose();
         }
+
+        private Color PenColor = Color.Black;
+        void UpdatePenColor()
+        {
+            PenColorDialog.ShowDialog();
+            this.PenColor = PenColorDialog.Color;
+        }
+
+        void DrawSineWave()
+        {
+
+        }
+
         //Event handlers-------------------------------------------------------
         private void ExitButton_Click(object sender, EventArgs e)
         {
@@ -168,7 +181,7 @@ namespace GraphicsExample
                     //Keep for context boxes 
                     break;
                 case MouseButtons.Middle:
-                    PenColorDialog.ShowDialog();
+                    UpdatePenColor();
                     break;
                 case MouseButtons.None:
                     break;
