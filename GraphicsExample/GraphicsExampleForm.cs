@@ -150,7 +150,26 @@ namespace GraphicsExample
 
         void DrawSineWave()
         {
+            Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
+            //create a pen to draw with
+            Pen thePen = new Pen(Color.Lime);
+            thePen.Width = 3;
+            int lastX = 0, lastY = 0, currentY = 0;
+            for (int currentX = 0; currentX < 360; currentX++)
+            {
+                currentY = (int)(Math.Round(100 * Math.Sin(currentX)));
+                g.DrawLine(thePen, lastX, lastY, currentX, currentY);
+                lastX = currentX;
+                lastY = currentY;
+                
 
+            }
+
+
+
+            //Free the resources
+            g.Dispose();
+            thePen.Dispose();
         }
 
         //Event handlers-------------------------------------------------------
@@ -161,12 +180,13 @@ namespace GraphicsExample
 
         private void DrawButton_Click(object sender, EventArgs e)
         {
-            DrawLine();
-            DrawEllipse();
-            DrawRectangle();
-            DrawPie();
-            DrawString();
-            DrawImage();
+            //DrawLine();
+            //DrawEllipse();
+            //DrawRectangle();
+            //DrawPie();
+            //DrawString();
+            //DrawImage();
+            DrawSineWave();
         }
 
         private void DisplayPictureBox_MouseStuff(object? sender, MouseEventArgs e)
