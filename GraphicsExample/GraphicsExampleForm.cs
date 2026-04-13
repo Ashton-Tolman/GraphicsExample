@@ -153,11 +153,18 @@ namespace GraphicsExample
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
             //create a pen to draw with
             Pen thePen = new Pen(Color.Lime);
-            thePen.Width = 3;
+            thePen.Width = 2;
             int lastX = 0, lastY = 0, currentY = 0;
+            float scaleX = DisplayPictureBox.Width / 360F;
+            float scaleY = (DisplayPictureBox.Height / 200F) * -1;
+            
+            g.TranslateTransform(0, DisplayPictureBox.Height / 2);
+
+            g.ScaleTransform(scaleX, scaleY);
+
             for (int currentX = 0; currentX < 360; currentX++)
             {
-                currentY = (int)(Math.Round(100 * Math.Sin(currentX)));
+                currentY = (int)(Math.Round(100 * Math.Sin((Math.PI / 180) * currentX)));
                 g.DrawLine(thePen, lastX, lastY, currentX, currentY);
                 lastX = currentX;
                 lastY = currentY;
