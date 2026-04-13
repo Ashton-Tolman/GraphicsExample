@@ -179,6 +179,36 @@ namespace GraphicsExample
             thePen.Dispose();
         }
 
+        void DrawGrid()
+        {
+            DisplayPictureBox.Refresh();
+            Color oldColor = this.PenColor;
+            this.PenColor = Color.Gray;
+            int xDiv = DisplayPictureBox.Width / 10;
+            int yDiv = DisplayPictureBox.Height / 8;
+
+            this.oldX = 0;
+            this.oldY = 0;
+
+            for (int x = 0; x < DisplayPictureBox.Width; x += xDiv)
+            {
+                oldX = x;
+                DrawLineSegment(x, DisplayPictureBox.Height);
+            }
+
+            this.oldX = 0;
+            this.oldY = 0;
+            
+            for (int y = 0; y < DisplayPictureBox.Height; y += yDiv)
+            {
+                oldY = y;
+                DrawLineSegment(DisplayPictureBox.Width, y);
+            }
+
+            this.PenColor = oldColor;
+        }
+
+
         //Event handlers-------------------------------------------------------
         private void ExitButton_Click(object sender, EventArgs e)
         {
@@ -193,7 +223,8 @@ namespace GraphicsExample
             //DrawPie();
             //DrawString();
             //DrawImage();
-            DrawSineWave();
+            //DrawSineWave();
+            DrawGrid();
         }
 
         private void DisplayPictureBox_MouseStuff(object? sender, MouseEventArgs e)
