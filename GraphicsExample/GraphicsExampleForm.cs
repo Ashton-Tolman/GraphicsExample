@@ -11,7 +11,7 @@ namespace GraphicsExample
             DisplayPictureBox.MouseDown += DisplayPictureBox_MouseStuff;//now the mouse down event is never called
         }
 
-     
+
 
         int oldX, oldY;
         void DrawLineSegment(int newX, int newY)
@@ -22,7 +22,7 @@ namespace GraphicsExample
             thePen.Width = 2;
             //draw line here
             g.DrawLine(thePen, oldX, oldY, newX, newY);
-            
+
 
 
             //Free the resources
@@ -54,8 +54,8 @@ namespace GraphicsExample
             //create a pen to draw with
             Pen thePen = new Pen(Color.Red);
 
-            g.DrawRectangle(thePen, 100,100, 200, 200);
-            
+            g.DrawRectangle(thePen, 100, 100, 200, 200);
+
 
             //Free the resources
             g.Dispose();
@@ -73,10 +73,10 @@ namespace GraphicsExample
             Rectangle bounds = new Rectangle(100, 100, 200, 200);
 
             //g.DrawPie(thePen, bounds, 0, 45);
-            g.FillPie(theBrush, bounds, 0,120);
+            g.FillPie(theBrush, bounds, 0, 120);
             theBrush.Color = Color.Blue;
             g.FillPie(theBrush, bounds, 120, 120);
-            theBrush.Color= Color.Yellow;
+            theBrush.Color = Color.Yellow;
             g.FillPie(theBrush, bounds, 240, 120);
 
             //Free the resources
@@ -116,7 +116,7 @@ namespace GraphicsExample
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
             //create a pen to draw with
             Image theImage = Image.FromFile("..\\..\\..\\Cruelhorizon.png");
-            Rectangle bounds = new Rectangle(800, 1, theImage.Width /scaleFactor, theImage.Height /scaleFactor);
+            Rectangle bounds = new Rectangle(800, 1, theImage.Width / scaleFactor, theImage.Height / scaleFactor);
 
             g.DrawImage(theImage, bounds); //fills rectangle with the image
 
@@ -157,7 +157,7 @@ namespace GraphicsExample
             int lastX = 0, lastY = 0, currentY = 0;
             float scaleX = DisplayPictureBox.Width / 360F;
             float scaleY = (DisplayPictureBox.Height / 200F) * -1;
-            
+
             g.TranslateTransform(0, DisplayPictureBox.Height / 2);
 
             g.ScaleTransform(scaleX, scaleY);
@@ -168,7 +168,7 @@ namespace GraphicsExample
                 g.DrawLine(thePen, lastX, lastY, currentX, currentY);
                 lastX = currentX;
                 lastY = currentY;
-                
+
 
             }
 
@@ -198,7 +198,7 @@ namespace GraphicsExample
 
             this.oldX = 0;
             this.oldY = 0;
-            
+
             for (int y = 0; y < DisplayPictureBox.Height; y += yDiv)
             {
                 oldY = y;
@@ -217,14 +217,14 @@ namespace GraphicsExample
 
         private void DrawButton_Click(object sender, EventArgs e)
         {
+            DrawGrid();
             //DrawLine();
             //DrawEllipse();
             //DrawRectangle();
             //DrawPie();
             //DrawString();
             //DrawImage();
-            //DrawSineWave();
-            DrawGrid();
+            DrawSineWave();
         }
 
         private void DisplayPictureBox_MouseStuff(object? sender, MouseEventArgs e)
@@ -258,5 +258,9 @@ namespace GraphicsExample
 
         }
 
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            DisplayPictureBox.Refresh();
+        }
     }
 }

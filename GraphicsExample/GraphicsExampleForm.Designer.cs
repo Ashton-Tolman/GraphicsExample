@@ -37,6 +37,7 @@
             FileTopMenuItem = new ToolStripMenuItem();
             DrawTopMenuItem = new ToolStripMenuItem();
             ClearTopMenuItem = new ToolStripMenuItem();
+            ExitTopMenuItem = new ToolStripMenuItem();
             HelpTopMenuItem = new ToolStripMenuItem();
             AboutTopMenuItem = new ToolStripMenuItem();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -44,7 +45,7 @@
             clearToolStripMenuItem = new ToolStripMenuItem();
             colorToolStripMenuItem = new ToolStripMenuItem();
             penSizeToolStripMenuItem = new ToolStripMenuItem();
-            ExitTopMenuItem = new ToolStripMenuItem();
+            ClearButton = new Button();
             ((System.ComponentModel.ISupportInitialize)DisplayPictureBox).BeginInit();
             menuStrip1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
@@ -63,7 +64,7 @@
             // DrawButton
             // 
             DrawButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            DrawButton.Location = new Point(1329, 643);
+            DrawButton.Location = new Point(1203, 643);
             DrawButton.Name = "DrawButton";
             DrawButton.Size = new Size(120, 53);
             DrawButton.TabIndex = 1;
@@ -102,14 +103,20 @@
             // DrawTopMenuItem
             // 
             DrawTopMenuItem.Name = "DrawTopMenuItem";
-            DrawTopMenuItem.Size = new Size(270, 34);
+            DrawTopMenuItem.Size = new Size(155, 34);
             DrawTopMenuItem.Text = "&Draw";
             // 
             // ClearTopMenuItem
             // 
             ClearTopMenuItem.Name = "ClearTopMenuItem";
-            ClearTopMenuItem.Size = new Size(270, 34);
+            ClearTopMenuItem.Size = new Size(155, 34);
             ClearTopMenuItem.Text = "&Clear";
+            // 
+            // ExitTopMenuItem
+            // 
+            ExitTopMenuItem.Name = "ExitTopMenuItem";
+            ExitTopMenuItem.Size = new Size(155, 34);
+            ExitTopMenuItem.Text = "E&xit";
             // 
             // HelpTopMenuItem
             // 
@@ -121,7 +128,7 @@
             // AboutTopMenuItem
             // 
             AboutTopMenuItem.Name = "AboutTopMenuItem";
-            AboutTopMenuItem.Size = new Size(270, 34);
+            AboutTopMenuItem.Size = new Size(164, 34);
             AboutTopMenuItem.Text = "&About";
             // 
             // contextMenuStrip1
@@ -134,38 +141,44 @@
             // drawToolStripMenuItem
             // 
             drawToolStripMenuItem.Name = "drawToolStripMenuItem";
-            drawToolStripMenuItem.Size = new Size(240, 32);
+            drawToolStripMenuItem.Size = new Size(148, 32);
             drawToolStripMenuItem.Text = "Draw";
             // 
             // clearToolStripMenuItem
             // 
             clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            clearToolStripMenuItem.Size = new Size(240, 32);
+            clearToolStripMenuItem.Size = new Size(148, 32);
             clearToolStripMenuItem.Text = "Clear";
             // 
             // colorToolStripMenuItem
             // 
             colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            colorToolStripMenuItem.Size = new Size(240, 32);
+            colorToolStripMenuItem.Size = new Size(148, 32);
             colorToolStripMenuItem.Text = "Color";
             // 
             // penSizeToolStripMenuItem
             // 
             penSizeToolStripMenuItem.Name = "penSizeToolStripMenuItem";
-            penSizeToolStripMenuItem.Size = new Size(240, 32);
+            penSizeToolStripMenuItem.Size = new Size(148, 32);
             penSizeToolStripMenuItem.Text = "Pen Size";
             // 
-            // ExitTopMenuItem
+            // ClearButton
             // 
-            ExitTopMenuItem.Name = "ExitTopMenuItem";
-            ExitTopMenuItem.Size = new Size(270, 34);
-            ExitTopMenuItem.Text = "E&xit";
+            ClearButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            ClearButton.Location = new Point(1329, 643);
+            ClearButton.Name = "ClearButton";
+            ClearButton.Size = new Size(120, 53);
+            ClearButton.TabIndex = 4;
+            ClearButton.Text = "&Clear";
+            ClearButton.UseVisualStyleBackColor = true;
+            ClearButton.Click += ClearButton_Click;
             // 
             // GraphicsExampleForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1591, 708);
+            Controls.Add(ClearButton);
             Controls.Add(ExitButton);
             Controls.Add(DrawButton);
             Controls.Add(DisplayPictureBox);
@@ -201,5 +214,6 @@
         private ToolStripMenuItem colorToolStripMenuItem;
         private ToolStripMenuItem penSizeToolStripMenuItem;
         private ToolStripMenuItem ExitTopMenuItem;
+        private Button ClearButton;
     }
 }
