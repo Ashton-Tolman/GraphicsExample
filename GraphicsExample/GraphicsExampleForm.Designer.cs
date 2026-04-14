@@ -33,28 +33,29 @@
             DrawButton = new Button();
             ExitButton = new Button();
             PenColorDialog = new ColorDialog();
-            menuStrip1 = new MenuStrip();
+            TopMenuStrip = new MenuStrip();
             FileTopMenuItem = new ToolStripMenuItem();
             DrawTopMenuItem = new ToolStripMenuItem();
             ClearTopMenuItem = new ToolStripMenuItem();
             ExitTopMenuItem = new ToolStripMenuItem();
             HelpTopMenuItem = new ToolStripMenuItem();
             AboutTopMenuItem = new ToolStripMenuItem();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            drawToolStripMenuItem = new ToolStripMenuItem();
-            clearToolStripMenuItem = new ToolStripMenuItem();
-            colorToolStripMenuItem = new ToolStripMenuItem();
-            penSizeToolStripMenuItem = new ToolStripMenuItem();
+            DisplayContextMenuStrip = new ContextMenuStrip(components);
+            DrawContextpMenuItem = new ToolStripMenuItem();
+            ClearContextMenuItem = new ToolStripMenuItem();
+            ColorContextMenuItem = new ToolStripMenuItem();
+            PenSizeContextMenuItem = new ToolStripMenuItem();
             ClearButton = new Button();
             ((System.ComponentModel.ISupportInitialize)DisplayPictureBox).BeginInit();
-            menuStrip1.SuspendLayout();
-            contextMenuStrip1.SuspendLayout();
+            TopMenuStrip.SuspendLayout();
+            DisplayContextMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // DisplayPictureBox
             // 
             DisplayPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DisplayPictureBox.BackColor = SystemColors.ActiveCaption;
+            DisplayPictureBox.ContextMenuStrip = DisplayContextMenuStrip;
             DisplayPictureBox.Location = new Point(12, 50);
             DisplayPictureBox.Name = "DisplayPictureBox";
             DisplayPictureBox.Size = new Size(1567, 544);
@@ -83,15 +84,15 @@
             ExitButton.UseVisualStyleBackColor = true;
             ExitButton.Click += ExitButton_Click;
             // 
-            // menuStrip1
+            // TopMenuStrip
             // 
-            menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { FileTopMenuItem, HelpTopMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1591, 33);
-            menuStrip1.TabIndex = 3;
-            menuStrip1.Text = "menuStrip1";
+            TopMenuStrip.ImageScalingSize = new Size(24, 24);
+            TopMenuStrip.Items.AddRange(new ToolStripItem[] { FileTopMenuItem, HelpTopMenuItem });
+            TopMenuStrip.Location = new Point(0, 0);
+            TopMenuStrip.Name = "TopMenuStrip";
+            TopMenuStrip.Size = new Size(1591, 33);
+            TopMenuStrip.TabIndex = 3;
+            TopMenuStrip.Text = "menuStrip1";
             // 
             // FileTopMenuItem
             // 
@@ -111,6 +112,7 @@
             ClearTopMenuItem.Name = "ClearTopMenuItem";
             ClearTopMenuItem.Size = new Size(155, 34);
             ClearTopMenuItem.Text = "&Clear";
+            ClearTopMenuItem.Click += ClearButton_Click;
             // 
             // ExitTopMenuItem
             // 
@@ -131,36 +133,37 @@
             AboutTopMenuItem.Size = new Size(164, 34);
             AboutTopMenuItem.Text = "&About";
             // 
-            // contextMenuStrip1
+            // DisplayContextMenuStrip
             // 
-            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { drawToolStripMenuItem, clearToolStripMenuItem, colorToolStripMenuItem, penSizeToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(149, 132);
+            DisplayContextMenuStrip.ImageScalingSize = new Size(24, 24);
+            DisplayContextMenuStrip.Items.AddRange(new ToolStripItem[] { DrawContextpMenuItem, ClearContextMenuItem, ColorContextMenuItem, PenSizeContextMenuItem });
+            DisplayContextMenuStrip.Name = "contextMenuStrip1";
+            DisplayContextMenuStrip.Size = new Size(149, 132);
             // 
-            // drawToolStripMenuItem
+            // DrawContextpMenuItem
             // 
-            drawToolStripMenuItem.Name = "drawToolStripMenuItem";
-            drawToolStripMenuItem.Size = new Size(148, 32);
-            drawToolStripMenuItem.Text = "Draw";
+            DrawContextpMenuItem.Name = "DrawContextpMenuItem";
+            DrawContextpMenuItem.Size = new Size(148, 32);
+            DrawContextpMenuItem.Text = "Draw";
             // 
-            // clearToolStripMenuItem
+            // ClearContextMenuItem
             // 
-            clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            clearToolStripMenuItem.Size = new Size(148, 32);
-            clearToolStripMenuItem.Text = "Clear";
+            ClearContextMenuItem.Name = "ClearContextMenuItem";
+            ClearContextMenuItem.Size = new Size(148, 32);
+            ClearContextMenuItem.Text = "Clear";
+            ClearContextMenuItem.Click += ClearButton_Click;
             // 
-            // colorToolStripMenuItem
+            // ColorContextMenuItem
             // 
-            colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            colorToolStripMenuItem.Size = new Size(148, 32);
-            colorToolStripMenuItem.Text = "Color";
+            ColorContextMenuItem.Name = "ColorContextMenuItem";
+            ColorContextMenuItem.Size = new Size(148, 32);
+            ColorContextMenuItem.Text = "Color";
             // 
-            // penSizeToolStripMenuItem
+            // PenSizeContextMenuItem
             // 
-            penSizeToolStripMenuItem.Name = "penSizeToolStripMenuItem";
-            penSizeToolStripMenuItem.Size = new Size(148, 32);
-            penSizeToolStripMenuItem.Text = "Pen Size";
+            PenSizeContextMenuItem.Name = "PenSizeContextMenuItem";
+            PenSizeContextMenuItem.Size = new Size(148, 32);
+            PenSizeContextMenuItem.Text = "Pen Size";
             // 
             // ClearButton
             // 
@@ -182,16 +185,16 @@
             Controls.Add(ExitButton);
             Controls.Add(DrawButton);
             Controls.Add(DisplayPictureBox);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
+            Controls.Add(TopMenuStrip);
+            MainMenuStrip = TopMenuStrip;
             MinimumSize = new Size(500, 500);
             Name = "GraphicsExampleForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Graphics Example Form";
             ((System.ComponentModel.ISupportInitialize)DisplayPictureBox).EndInit();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
-            contextMenuStrip1.ResumeLayout(false);
+            TopMenuStrip.ResumeLayout(false);
+            TopMenuStrip.PerformLayout();
+            DisplayContextMenuStrip.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,17 +205,17 @@
         private Button DrawButton;
         private Button ExitButton;
         private ColorDialog PenColorDialog;
-        private MenuStrip menuStrip1;
+        private MenuStrip TopMenuStrip;
         private ToolStripMenuItem FileTopMenuItem;
         private ToolStripMenuItem DrawTopMenuItem;
         private ToolStripMenuItem ClearTopMenuItem;
         private ToolStripMenuItem HelpTopMenuItem;
         private ToolStripMenuItem AboutTopMenuItem;
-        private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem drawToolStripMenuItem;
-        private ToolStripMenuItem clearToolStripMenuItem;
-        private ToolStripMenuItem colorToolStripMenuItem;
-        private ToolStripMenuItem penSizeToolStripMenuItem;
+        private ContextMenuStrip DisplayContextMenuStrip;
+        private ToolStripMenuItem DrawContextpMenuItem;
+        private ToolStripMenuItem ClearContextMenuItem;
+        private ToolStripMenuItem ColorContextMenuItem;
+        private ToolStripMenuItem PenSizeContextMenuItem;
         private ToolStripMenuItem ExitTopMenuItem;
         private Button ClearButton;
     }

@@ -9,17 +9,21 @@ namespace GraphicsExample
             DisplayPictureBox.MouseMove += DisplayPictureBox_MouseStuff;
             //DisplayPictureBox.MouseDown += DisplayPictureBox_MouseDown;
             DisplayPictureBox.MouseDown += DisplayPictureBox_MouseStuff;//now the mouse down event is never called
+            
         }
 
+        private Color PenColor = Color.Black;
+        private Color backGround = Color.White;
+        private int penSize = 1;
 
-
-        int oldX, oldY;
+        private int oldX, oldY;
         void DrawLineSegment(int newX, int newY)
         {
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
             //create a pen to draw with
             Pen thePen = new Pen(this.PenColor);
-            thePen.Width = 2;
+            thePen.Width = this.penSize;
+
             //draw line here
             g.DrawLine(thePen, oldX, oldY, newX, newY);
 
@@ -141,7 +145,6 @@ namespace GraphicsExample
             thePen.Dispose();
         }
 
-        private Color PenColor = Color.Black;
         void UpdatePenColor()
         {
             PenColorDialog.ShowDialog();
