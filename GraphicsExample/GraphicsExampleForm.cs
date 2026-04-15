@@ -6,11 +6,22 @@ namespace GraphicsExample
         public GraphicsExampleForm()
         {
             InitializeComponent();
+
+            //map event handlers 
             DisplayPictureBox.MouseMove += DisplayPictureBox_MouseStuff;
             //DisplayPictureBox.MouseDown += DisplayPictureBox_MouseDown;
             DisplayPictureBox.MouseDown += DisplayPictureBox_MouseStuff;//now the mouse down event is never called
             PenContextMenuItem.Click += PenColor_Click;
             BackGroundContextMenuItem.Click += BackGroundContextMenuItem_Click;
+            PenSizeComboBox.SelectedIndexChanged += PenSizeComboBox_SelectedIndexChanged;
+            //Populate pen size combo box
+            PenSizeComboBox.Items.Add(1);
+            PenSizeComboBox.Items.Add(2);
+            PenSizeComboBox.Items.Add(3);
+            PenSizeComboBox.Items.Add(5);
+            PenSizeComboBox.Items.Add(10);
+            PenSizeComboBox.SelectedIndex = 0;
+
         }
 
         
@@ -18,8 +29,9 @@ namespace GraphicsExample
         private Color PenColor = Color.Black;
         private Color backGroundColor = Color.White;
         private int penSize = 1;
-
         private int oldX, oldY;
+
+
         void DrawLineSegment(int newX, int newY)
         {
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
@@ -161,6 +173,11 @@ namespace GraphicsExample
             DisplayPictureBox.BackColor = this.backGroundColor;
         }
 
+        void UpdatePenSize()
+        {
+            this.penSize = int.Parse(PenSizeComboBox.SelectedItem.ToString());
+        }
+
         void DrawSineWave()
         {
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
@@ -197,6 +214,8 @@ namespace GraphicsExample
             DisplayPictureBox.Refresh();
             Color oldColor = this.PenColor;
             this.PenColor = Color.Gray;
+            int oldPenSize = this.penSize;
+            this.penSize = 1;
             int xDiv = DisplayPictureBox.Width / 10;
             int yDiv = DisplayPictureBox.Height / 8;
 
@@ -219,6 +238,7 @@ namespace GraphicsExample
             }
 
             this.PenColor = oldColor;
+            this.penSize = oldPenSize;
         }
 
 
@@ -284,6 +304,11 @@ namespace GraphicsExample
         private void BackGroundContextMenuItem_Click(object? sender, EventArgs e)
         {
             UpdateBackGroundColor();
+        }
+
+        private void PenSizeComboBox_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            UpdatePenSize();
         }
     }
 }
