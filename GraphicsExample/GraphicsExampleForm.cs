@@ -9,11 +9,14 @@ namespace GraphicsExample
             DisplayPictureBox.MouseMove += DisplayPictureBox_MouseStuff;
             //DisplayPictureBox.MouseDown += DisplayPictureBox_MouseDown;
             DisplayPictureBox.MouseDown += DisplayPictureBox_MouseStuff;//now the mouse down event is never called
-            
+            PenContextMenuItem.Click += PenColor_Click;
+            BackGroundContextMenuItem.Click += BackGroundContextMenuItem_Click;
         }
 
+        
+
         private Color PenColor = Color.Black;
-        private Color backGround = Color.White;
+        private Color backGroundColor = Color.White;
         private int penSize = 1;
 
         private int oldX, oldY;
@@ -151,6 +154,13 @@ namespace GraphicsExample
             this.PenColor = PenColorDialog.Color;
         }
 
+        void UpdateBackGroundColor()
+        {
+            PenColorDialog.ShowDialog();
+            this.backGroundColor = PenColorDialog.Color;
+            DisplayPictureBox.BackColor = this.backGroundColor;
+        }
+
         void DrawSineWave()
         {
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
@@ -264,6 +274,16 @@ namespace GraphicsExample
         private void ClearButton_Click(object sender, EventArgs e)
         {
             DisplayPictureBox.Refresh();
+        }
+
+        private void PenColor_Click(object? sender, EventArgs e)
+        {
+            UpdatePenColor();
+        }
+
+        private void BackGroundContextMenuItem_Click(object? sender, EventArgs e)
+        {
+            UpdateBackGroundColor();
         }
     }
 }
