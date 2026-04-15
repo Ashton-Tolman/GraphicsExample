@@ -262,7 +262,7 @@ namespace GraphicsExample
 
         private void DisplayPictureBox_MouseStuff(object? sender, MouseEventArgs e)
         {
-            this.Text = $"({e.X},{e.Y}) {e.Button}";
+            DrawingStatusLabel.Text = $"({e.X.ToString().PadLeft(4)},{e.Y.ToString().PadLeft(4)}) | {e.Button} | {this.penSize} | {this.PenColor}";
             switch (e.Button)
             {
                 case MouseButtons.Left:
