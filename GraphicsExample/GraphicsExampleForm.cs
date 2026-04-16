@@ -24,7 +24,7 @@ namespace GraphicsExample
 
         }
 
-        
+
 
         private Color PenColor = Color.Black;
         private Color backGroundColor = Color.White;
@@ -309,6 +309,19 @@ namespace GraphicsExample
         private void PenSizeComboBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             UpdatePenSize();
+        }
+
+        private void AboutTopMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm(); //instantiate the about form
+            aboutForm.FormClosed += AboutForm_FormClosed;// map the formclosed event to a handler
+            aboutForm.Show(); //Opens the about form
+            this.Hide(); // Hides the graphics form
+        }
+
+        private void AboutForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            this.Show();// shows the graphics form when about form is closed
         }
     }
 }

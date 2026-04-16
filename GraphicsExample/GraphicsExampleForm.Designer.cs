@@ -163,20 +163,20 @@
             // DrawTopMenuItem
             // 
             DrawTopMenuItem.Name = "DrawTopMenuItem";
-            DrawTopMenuItem.Size = new Size(270, 36);
+            DrawTopMenuItem.Size = new Size(169, 36);
             DrawTopMenuItem.Text = "&Draw";
             // 
             // ClearTopMenuItem
             // 
             ClearTopMenuItem.Name = "ClearTopMenuItem";
-            ClearTopMenuItem.Size = new Size(270, 36);
+            ClearTopMenuItem.Size = new Size(169, 36);
             ClearTopMenuItem.Text = "&Clear";
             ClearTopMenuItem.Click += ClearButton_Click;
             // 
             // ExitTopMenuItem
             // 
             ExitTopMenuItem.Name = "ExitTopMenuItem";
-            ExitTopMenuItem.Size = new Size(270, 36);
+            ExitTopMenuItem.Size = new Size(169, 36);
             ExitTopMenuItem.Text = "E&xit";
             // 
             // HelpTopMenuItem
@@ -192,6 +192,7 @@
             AboutTopMenuItem.Name = "AboutTopMenuItem";
             AboutTopMenuItem.Size = new Size(270, 36);
             AboutTopMenuItem.Text = "&About";
+            AboutTopMenuItem.Click += AboutTopMenuItem_Click;
             // 
             // ClearButton
             // 
