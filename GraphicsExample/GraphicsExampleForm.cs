@@ -5,6 +5,7 @@ namespace GraphicsExample
     {
         public GraphicsExampleForm()
         {
+            ShowSplashForm();
             InitializeComponent();
 
             //map event handlers 
@@ -31,7 +32,13 @@ namespace GraphicsExample
         private int penSize = 1;
         private int oldX, oldY;
 
-
+        private void ShowSplashForm()
+        {
+            SplashForm splashForm = new SplashForm();
+            splashForm.Show();
+            System.Threading.Thread.Sleep(3000);
+            splashForm.Close();
+        }
         void DrawLineSegment(int newX, int newY)
         {
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
