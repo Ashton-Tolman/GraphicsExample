@@ -46,9 +46,9 @@ namespace GraphicsExample
             int shakeAmount = 10;
             int originalX = this.Location.X;
             int originalY = this.Location.Y;
-
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer("..\\..\\..\\Resources\\johnnybacon156-fah-469417.mp3");
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer("..\\..\\..\\Resources\\johnnybacon156-fah-469417.wav");
             player.Play();
+
             for (int i = 0; i < 20; i++)
             {
                 int offsetX = rnd.Next(-shakeAmount, shakeAmount);
