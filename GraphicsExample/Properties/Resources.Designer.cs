@@ -59,5 +59,14 @@ namespace GraphicsExample.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream johnnybacon156_fah_469417 {
+            get {
+                return ResourceManager.GetStream("johnnybacon156-fah-469417", resourceCulture);
+            }
+        }
     }
 }

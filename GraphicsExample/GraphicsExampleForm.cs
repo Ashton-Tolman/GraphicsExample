@@ -39,6 +39,26 @@ namespace GraphicsExample
             System.Threading.Thread.Sleep(3000);
             splashForm.Close();
         }
+
+        private void Shake()
+        {
+            Random rnd = new Random();
+            int shakeAmount = 10;
+            int originalX = this.Location.X;
+            int originalY = this.Location.Y;
+
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer("..\\..\\..\\Resources\\johnnybacon156-fah-469417.mp3");
+            player.Play();
+            for (int i = 0; i < 20; i++)
+            {
+                int offsetX = rnd.Next(-shakeAmount, shakeAmount);
+                int offsetY = rnd.Next(-shakeAmount, shakeAmount);
+                this.Location = new Point(originalX +  offsetX, originalY + offsetY);
+
+                System.Threading.Thread.Sleep(50);
+            }
+        }
+
         void DrawLineSegment(int newX, int newY)
         {
             Graphics g = DisplayPictureBox.CreateGraphics();//Constructor to create the surface that houses the image
@@ -300,6 +320,7 @@ namespace GraphicsExample
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            Shake();
             DisplayPictureBox.Refresh();
         }
 
